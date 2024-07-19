@@ -1,5 +1,4 @@
 import 'package:decimal/decimal.dart';
-import 'package:decimal/intl.dart';
 import 'package:humanizer/humanizer.dart';
 import 'package:humanizer/src/string_predicate_extensions.dart';
 import 'package:humanizer/src/units_of_measurement/rationals.dart';
@@ -718,8 +717,8 @@ class _NumberFormatNode<TValueUnit> extends _Node<TValueUnit> {
   @override
   String evaluate(_NodeEvaluationContext<TValueUnit> context) {
     final numberFormat = NumberFormat(format, context.locale);
-    final result = numberFormat.format(DecimalIntl(context.value.toDecimal(
-        scaleOnInfinitePrecision: numberFormat.decimalDigits ?? 10)));
+    final result = numberFormat.format(
+        context.value.toDecimal(scaleOnInfinitePrecision: numberFormat.decimalDigits ?? 10));
     return result;
   }
 }
